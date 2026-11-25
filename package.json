@@ -1,0 +1,46 @@
+{
+  "name": "myapp",
+  "version": "1.0.0",
+  "description": "تەپەككۇر-بۇلىقى",
+  "main": "main.cjs",
+  "author": "Private",
+  "license": "UNLICENSED",
+  "private": true,
+  "scripts": {
+    "start": "electron .",
+    "dist": "electron-builder --win nsis portable --publish never"
+  },
+  "devDependencies": {
+    "electron": "^33.2.1",
+    "electron-builder": "^25.1.8"
+  },
+  "build": {
+    "appId": "com.example.myapp",
+    "productName": "تەپەككۇر-بۇلىقى",
+    "files": [
+      "main.cjs",
+      "www/**/*",
+      "icon.png"
+    ],
+    "directories": {
+      "output": "dist"
+    },
+    "asar": true,
+    "compression": "maximum",
+    "win": {
+      "target": [
+        "nsis",
+        "portable"
+      ],
+      "icon": "icon.png"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "artifactName": "myapp-Setup-${version}.${ext}"
+    },
+    "portable": {
+      "artifactName": "myapp-Portable-${version}.${ext}"
+    }
+  }
+}
